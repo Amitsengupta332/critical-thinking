@@ -1,5 +1,3 @@
-const obj ={};
-
-obj.nextLevel = {courseId : "level02"};
-obj[true] = {courseId: "level01"};
-console.log(obj);
+const canAccess = currentUserRoles.some((role) =>
+  featureAccessRoles.includes(role)
+);
