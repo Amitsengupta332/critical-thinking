@@ -31,6 +31,8 @@ class LinkedList {
     }
 
     this.length++;
+
+    return this;
   }
 
   prepend(value) {
@@ -50,6 +52,8 @@ class LinkedList {
     }
 
     this.length++;
+
+    return this;
   }
 
   insert(index, value) {
@@ -71,18 +75,41 @@ class LinkedList {
     // if the insert is in the middle
 
     // find leading node
-    let count = 0;
-    let leadingNode = this.head;
+    // let count = 0;
+    // let leadingNode = this.head;
 
-    while (count !== index - 1) {
-      leadingNode = leadingNode.next;
-      count++;
-    }
+    // while (count !== index - 1) {
+    //   leadingNode = leadingNode.next;
+    //   count++;
+    // }
 
-    console.log(leadingNode)
+    // console.log(leadingNode)
+    const leadingNode = this._traverseToIndex(index - 1);
+    const holdingNode = leadingNode.next;
+
+    const newNode = new Node(value);
+    leadingNode.next = newNode;
+    newNode.next = holdingNode;
+    this.length++;
+
+
+   
   }
 
   remove() {}
+
+  // privet helper method
+  _traverseToIndex(index) {
+    let count = 0;
+    let currentNode = this.head;
+
+    while (count !== index) {
+      currentNode = currentNode.next;
+      count++;
+    }
+
+    return currentNode;
+  }
 
   print() {
     const arr = [];
